@@ -4,13 +4,23 @@ require 'mp3tag_search/simple_album'
 
 module Mp3tagSearch
   class AmazonClient
+    COUNTRY_CODE = 'jp'
+
     def lookup(asin)
     end
 
-    def search(q, opts)
+    def search(q, opts = {})
+      opts = {
+        :country => COUNTRY_CODE,
+        :search_index => 'Music',
+        :response_group => 'ItemAttributes',
+        :count => 25
+      }.merge(opts)
+
       resp = Amazon::Ecs.item_search(q, opts)
+      
       resp.items.to_a.select{ |item|
-        item.get("ItemAttributes/Binding") == "CD" && item.get("ItemAttributes/Format").nil?
+        item.get("ItemAttributes/Binding") == "CD"
       }.map{ |item|
         asin   = item.get("ASIN")
         title  = item.get("ItemAttributes/Title")
@@ -20,19 +30,11 @@ module Mp3tagSearch
     end
 
     def search_by_artist(artist)
-      search("", default_search_opts.merge(:artist => artist))
+      search("", :artist => artist)
     end
 
     def search_by_keyword(keyword)
-      search(keyword, default_search_opts)
-    end
-
-    private def default_search_opts
-      {
-        :country => 'jp',
-        :search_index => 'Music',
-        :response_group => 'ItemAttributes,Small,Tracks,Images',
-      }
+      search(keyword)
     end
   end
 end
