@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ItemLookupResponse>
+  <OperationRequest />
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ASIN</IdType>
+        <ItemId>SingleArtist</ItemId>
+        <ResponseGroup>ItemAttributes</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <ResponseGroup>Tracks</ResponseGroup>
+        <ResponseGroup>Images</ResponseGroup>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>SingleArtist</ASIN>
+      <DetailPageURL>./spec/fixtures/single_artist_item_description.html</DetailPageURL>
+      <ItemLinks />
+      <SmallImage>/
+        <URL>http://smallimage.single.test</URL>
+        <Height Units="pixels">10</Height>
+        <Width Units="pixels">10</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://mediumimage.single.test</URL>
+        <Height Units="pixels">100</Height>
+        <Width Units="pixels">100</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://largeimage.single.test</URL>
+        <Height Units="pixels">1000</Height>
+        <Width Units="pixels">1000</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SmallImage>
+            <URL>http://smallimage.single.test</URL>
+            <Height Units="pixels">10</Height>
+            <Width Units="pixels">10</Width>
+          </SmallImage>
+          <MediumImage>
+            <URL>http://mediumimage.single.test</URL>
+            <Height Units="pixels">100</Height>
+            <Width Units="pixels">100</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://largeimage.single.test</URL>
+            <Height Units="pixels">1000</Height>
+            <Width Units="pixels">1000</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Artist>Artist</Artist>
+        <Binding>CD</Binding>
+        <Format>Single</Format>
+        <Format>Maxi</Format>
+        <IsAdultProduct>0</IsAdultProduct>
+        <ListPrice>
+          <Amount>1200</Amount>
+          <CurrencyCode>JPY</CurrencyCode>
+          <FormattedPrice>￥ 1,200</FormattedPrice>
+        </ListPrice>
+        <NumberOfDiscs>1</NumberOfDiscs>
+        <NumberOfItems>1</NumberOfItems>
+        <ProductGroup>Music</ProductGroup>
+        <ProductTypeName>ABIS_MUSIC</ProductTypeName>
+        <Title>SingleAlbumTitle</Title>
+      </ItemAttributes>
+      <Tracks>
+        <Disc Number="1">
+          <Track Number="1">TestTrack01</Track>
+          <Track Number="2">TestTrack02</Track>
+          <Track Number="3">TestTrack03</Track>
+        </Disc>
+      </Tracks>
+    </Item>
+  </Items>
+</ItemLookupResponse>

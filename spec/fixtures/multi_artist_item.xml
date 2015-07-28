@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ItemLookupResponse>
+  <OperationRequest />
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ASIN</IdType>
+        <ItemId>MultiArtist</ItemId>
+        <ResponseGroup>ItemAttributes</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <ResponseGroup>Tracks</ResponseGroup>
+        <ResponseGroup>Images</ResponseGroup>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>MultiArtist</ASIN>
+      <DetailPageURL>./spec/fixtures/multi_artist_item_description.html</DetailPageURL>
+      <ItemLinks />
+      <SmallImage>/
+        <URL>http://smallimage.multi.test</URL>
+        <Height Units="pixels">10</Height>
+        <Width Units="pixels">10</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://mediumimage.multi.test</URL>
+        <Height Units="pixels">100</Height>
+        <Width Units="pixels">100</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://largeimage.multi.test</URL>
+        <Height Units="pixels">1000</Height>
+        <Width Units="pixels">1000</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SmallImage>
+            <URL>http://smallimage.multi.test</URL>
+            <Height Units="pixels">10</Height>
+            <Width Units="pixels">10</Width>
+          </SmallImage>
+          <MediumImage>
+            <URL>http://mediumimage.multi.test</URL>
+            <Height Units="pixels">100</Height>
+            <Width Units="pixels">100</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://largeimage.multi.test</URL>
+            <Height Units="pixels">1000</Height>
+            <Width Units="pixels">1000</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Artist>オムニバス</Artist>
+        <Binding>CD</Binding>
+        <Format>Single</Format>
+        <Format>Maxi</Format>
+        <IsAdultProduct>0</IsAdultProduct>
+        <ListPrice>
+          <Amount>1200</Amount>
+          <CurrencyCode>JPY</CurrencyCode>
+          <FormattedPrice>￥ 1,200</FormattedPrice>
+        </ListPrice>
+        <NumberOfDiscs>1</NumberOfDiscs>
+        <NumberOfItems>1</NumberOfItems>
+        <ProductGroup>Music</ProductGroup>
+        <ProductTypeName>ABIS_MUSIC</ProductTypeName>
+        <Title>MultiAlbumTitle</Title>
+      </ItemAttributes>
+      <Tracks>
+        <Disc Number="1">
+          <Track Number="1">TestTrack11</Track>
+          <Track Number="2">TestTrack12</Track>
+          <Track Number="3">TestTrack13</Track>
+        </Disc>
+        <Disc Number="2">
+          <Track Number="1">TestTrack21</Track>
+          <Track Number="2">TestTrack22</Track>
+          <Track Number="3">TestTrack23</Track>
+        </Disc>
+      </Tracks>
+    </Item>
+  </Items>
+</ItemLookupResponse>
