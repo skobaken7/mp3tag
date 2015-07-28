@@ -1,6 +1,6 @@
 module Mp3tagSearch
   module MusicInfo
-    VARIOUTS_ARTISTS = "VariousArtists"
+    VARIOUS_ARTISTS = "VariousArtists"
     UNKNOWN = "Unkown"
   
     def children 
@@ -8,16 +8,16 @@ module Mp3tagSearch
     end
   
     def artist
-      if chidren.nil?
+      if children.nil?
         UNKNOWN
       else
-        artists = chidren.map{|a| a.artist}.unique
+        artists = children.map{|a| a.artist}.uniq
         if artists.size == 0
           UNKNOWN
         elsif artists.size == 1
           artists[0]
         else
-          VARIOUTS_ARTISTS
+          VARIOUS_ARTISTS
         end
       end
     end
