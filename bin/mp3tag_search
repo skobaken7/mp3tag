@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "mp3tag_search"
+
+Mp3tagSearch::Commands::SetTag.new(ARGV).exec

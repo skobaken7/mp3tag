@@ -6,7 +6,7 @@ module Mp3tagSearch
   
     def initialize(no, tracks)
       @no = no
-      @tracks = tracks
+      @tracks = tracks.sort_by{|t| t.no}
     end
   
     def children 

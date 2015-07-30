@@ -11,6 +11,19 @@ module Mp3tagSearch
 
     COUNTRY_CODE = 'jp'
 
+    def get_detail_description(url, cnt = 100)
+      begin
+        return Nokogiri::HTML(open(url)).css("#productDescription").inner_html
+      rescue
+        if cnt > 0
+          get_detail_description(url, cnt-1)
+        else
+          return nil
+        end
+      end
+    end
+
+
     def lookup(asin)
       resp = Amazon::Ecs.item_lookup(asin, :country => COUNTRY_CODE, :response_group => 'ItemAttributes,Small,Tracks,Images')
 
@@ -21,7 +34,7 @@ module Mp3tagSearch
       item = resp.items.first
 
       detail_page_url = item.get('DetailPageURL')
-      detail_description = Nokogiri::HTML(open(detail_page_url)).css("#productDescription").inner_html
+      detail_description = get_detail_description(item.get("DetailPageURL"))
 
       title = item.get("ItemAttributes/Title")
       artist = item.get("ItemAttributes/Artist")
@@ -55,12 +68,14 @@ module Mp3tagSearch
     end
 
     def grepArtistFromDescription(description, track_no, title)
-      lines = description.split("<br").map{|a| a.split("\n")}.flatten
-      regexp = /0?#{track_no}\s+(\S+)\s+\/\s+#{title}/
+      if !description.nil? && !description.empty?
+        lines = description.split("<br").map{|a| a.split("\n")}.flatten
+        regexp = /0?#{track_no}\s+(\S+)\s+\/\s+#{title}/
 
-      for l in lines
-        if regexp.match(l)
-          return $1
+        for l in lines
+          if regexp.match(l)
+            return $1
+          end
         end
       end
 

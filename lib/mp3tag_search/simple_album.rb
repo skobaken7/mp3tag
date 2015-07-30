@@ -2,6 +2,8 @@ module Mp3tagSearch
   class SimpleAlbum
     include MusicInfo
 
+    attr_reader :asin, :title, :artist
+
     def initialize(asin, title, artist)
       @asin = asin
       @title = title
@@ -13,7 +15,7 @@ module Mp3tagSearch
     end
 
     def to_s 
-      @title
+      "#{@title} / #{@artist}"
     end
   end
 end
