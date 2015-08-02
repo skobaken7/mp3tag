@@ -67,6 +67,7 @@
         <NumberOfItems>1</NumberOfItems>
         <ProductGroup>Music</ProductGroup>
         <ProductTypeName>ABIS_MUSIC</ProductTypeName>
+        <ReleaseDate>2015/07/07</ReleaseDate>
         <Title>SingleAlbumTitle</Title>
       </ItemAttributes>
       <Tracks>

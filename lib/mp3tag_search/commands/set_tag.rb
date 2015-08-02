@@ -14,7 +14,9 @@ module Mp3tagSearch
         :genre => "TCON",
         :thumbnail => "APIC",
         :disc_no => "TPOS",
-        :track_no => "TRCK"
+        :track_no => "TRCK",
+        :year => 'TYER',
+        :date => 'TDAT'
       }
 
       FRAME_THUMBNAIL = "APIC"
@@ -95,6 +97,8 @@ module Mp3tagSearch
           :album_title => album_info.title,
           :thumbnail => album_info.thumbnail,
           :genre => "",
+          :year => album_info.date.year,
+          :date => album_info.date.strftime("%m%d"),
           :tracks => Hash[@files.zip(album_info.track_hash_list)]
         }
 

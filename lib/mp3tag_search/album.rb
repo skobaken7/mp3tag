@@ -2,12 +2,13 @@ module Mp3tagSearch
   class Album
     include MusicInfo
 
-    attr_reader :title, :discs, :thumbnail
+    attr_reader :title, :discs, :thumbnail, :date
   
-    def initialize(title, discs, thumbnail)
+    def initialize(title, discs, thumbnail, date)
       @title = title
       @discs = discs.sort_by{|d| d.no}
       @thumbnail = thumbnail
+      @date = date
     end
 
     def children

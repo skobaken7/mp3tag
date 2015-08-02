@@ -39,6 +39,7 @@ module Mp3tagSearch
       title = item.get("ItemAttributes/Title")
       artist = item.get("ItemAttributes/Artist")
       thumbnail = item.get("MediumImage/URL")
+      date = Date.parse(item.get("ItemAttributes/ReleaseDate"))
 
       discs = item.get_elements("Tracks/Disc").map{|disc_elem|
         disc_no = disc_elem.attributes["Number"].text.to_i
@@ -64,7 +65,7 @@ module Mp3tagSearch
         disc.no
       }
 
-      Album.new(title, discs, thumbnail)
+      Album.new(title, discs, thumbnail, date)
     end
 
     def grepArtistFromDescription(description, track_no, title)

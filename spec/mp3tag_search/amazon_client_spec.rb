@@ -29,6 +29,7 @@ module Mp3tagSearch
   
         expect(album_info.title).to eq("SingleAlbumTitle")
         expect(album_info.artist).to eq("Artist")
+        expect(album_info.date).to eq(Date.new(2015, 7, 7))
       end
   
       context 'when album has various artists' do
@@ -48,6 +49,7 @@ module Mp3tagSearch
   
             expect(album_info.title).to eq("MultiAlbumTitle")
             expect(album_info.artist).to eq(MusicInfo::VARIOUS_ARTISTS)
+            expect(album_info.date).to eq(Date.new(2015, 7, 7))
           end
 
           it 'of which track artists are UNKNOWN when they are not found' do
