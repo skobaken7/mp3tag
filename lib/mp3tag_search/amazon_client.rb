@@ -36,7 +36,7 @@ module Mp3tagSearch
 
       title = item.get("ItemAttributes/Title")
       artist = item.get("ItemAttributes/Artist")
-      thumbnail = item.get("MediumImage/URL")
+      thumbnail = item.get("LargeImage/URL")
       date = Date.parse(item.get("ItemAttributes/ReleaseDate"))
 
       discs = item.get_elements("Tracks/Disc").map{|disc_elem|
