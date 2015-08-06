@@ -7,8 +7,6 @@ require 'open-uri'
 
 module Mp3tagSearch
   class AmazonClient
-    require File::expand_path('.amazon_config', ENV['HOME'])
-
     COUNTRY_CODE = 'jp'
 
     def get_detail_description(url, cnt = 100)

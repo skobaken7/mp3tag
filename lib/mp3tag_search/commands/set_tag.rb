@@ -102,6 +102,10 @@ module Mp3tagSearch
           :tracks => Hash[@files.zip(album_info.track_hash_list)]
         }
 
+        if !Mp3tagSearch::edit_tag_proc.nil?
+          Mp3tagSearch::edit_tag_proc.call(album_info, default_tags)
+        end
+
         Tempfile::open(Mp3tagSearch.to_s){|f|
           YAML.dump(default_tags, f)
           f.flush
