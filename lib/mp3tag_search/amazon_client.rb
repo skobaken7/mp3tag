@@ -9,7 +9,7 @@ module Mp3tagSearch
   class AmazonClient
     COUNTRY_CODE = 'jp'
 
-    def get_detail_description(url, cnt = 100)
+    def get_detail_description(url, cnt = Mp3tagSearch::REQUEST_MAX_COUNT)
       begin
         return Nokogiri::HTML(open(url)).css("#productDescription").inner_html
       rescue
