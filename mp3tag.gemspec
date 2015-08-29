@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["skobaken"]
   spec.email         = ["skobaken@gmail.com"]
 
-  spec.summary       = "command to search music information from amazon and edit mp3 tag"
-  spec.description   = "command to search music information from amazon and edit mp3 tag"
+  spec.summary       = "command to manage mp3 tag"
+  spec.description   = "command to manage mp3 tag"
   spec.homepage      = ""
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
