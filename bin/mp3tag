@@ -3,4 +3,12 @@
 require "bundler/setup"
 require "mp3tag"
 
-Mp3tag::Commands::SetTag.new(ARGV).exec
+command = ARGV.shift
+
+case command 
+when "search"
+  Mp3tag::Commands::Search.new(ARGV).exec
+when "show"
+  Mp3tag::Commands::Show.new(ARGV).exec
+end
+

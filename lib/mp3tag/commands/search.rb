@@ -6,7 +6,7 @@ require 'open-uri'
 
 module Mp3tag
   module Commands
-    class SetTag
+    class Search
       PREDEFINED_FRAMES = {
         :album_title => "TALB",
         :title => "TIT2",
