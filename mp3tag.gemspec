@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mp3tag_search/version'
+require 'mp3tag/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mp3tag_search"
-  spec.version       = Mp3tagSearch::VERSION
+  spec.name          = "mp3tag"
+  spec.version       = Mp3tag::VERSION
   spec.authors       = ["skobaken"]
   spec.email         = ["skobaken@gmail.com"]
 

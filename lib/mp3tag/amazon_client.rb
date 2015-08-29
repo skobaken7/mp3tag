@@ -1,15 +1,15 @@
 require 'amazon/ecs'
-require 'mp3tag_search/simple_album'
-require 'mp3tag_search/track'
-require 'mp3tag_search/disc'
-require 'mp3tag_search/album'
+require 'mp3tag/simple_album'
+require 'mp3tag/track'
+require 'mp3tag/disc'
+require 'mp3tag/album'
 require 'open-uri'
 
-module Mp3tagSearch
+module Mp3tag
   class AmazonClient
     COUNTRY_CODE = 'jp'
 
-    def get_detail_description(url, cnt = Mp3tagSearch::REQUEST_MAX_COUNT)
+    def get_detail_description(url, cnt = Mp3tag::REQUEST_MAX_COUNT)
       begin
         return Nokogiri::HTML(open(url)).css("#productDescription").inner_html
       rescue

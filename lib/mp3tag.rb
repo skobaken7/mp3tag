@@ -1,9 +1,9 @@
-require "mp3tag_search/version"
-require "mp3tag_search/music_info"
-require "mp3tag_search/amazon_client"
-require "mp3tag_search/commands/set_tag"
+require "mp3tag/version"
+require "mp3tag/music_info"
+require "mp3tag/amazon_client"
+require "mp3tag/commands/set_tag"
 
-module Mp3tagSearch
+module Mp3tag
   REQUEST_MAX_COUNT = 100
 
   def self.edit_tag(&block)
@@ -14,7 +14,7 @@ module Mp3tagSearch
     @edit_tag_proc
   end
 
-  require File::expand_path('.mp3tag_search_config', ENV['HOME'])
+  require File::expand_path('.mp3tag_config', ENV['HOME'])
 end
 
 module Amazon
@@ -23,7 +23,7 @@ module Amazon
       alias :send_request_sub :send_request
     end
 
-    def self.send_request(opts, cnt = Mp3tagSearch::REQUEST_MAX_COUNT)
+    def self.send_request(opts, cnt = Mp3tag::REQUEST_MAX_COUNT)
       begin
         send_request_sub(opts)
       rescue => e

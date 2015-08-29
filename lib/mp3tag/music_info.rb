@@ -1,4 +1,4 @@
-module Mp3tagSearch
+module Mp3tag
   module MusicInfo
     VARIOUS_ARTISTS = "VariousArtists"
     UNKNOWN = "Unkown"

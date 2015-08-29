@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "mp3tag"
+
+Mp3tag::Commands::SetTag.new(ARGV).exec

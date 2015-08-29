@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "webmock/rspec"
 
-module Mp3tagSearch
+module Mp3tag
   describe AmazonClient do
     describe '#lookup' do
       before do

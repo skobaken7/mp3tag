@@ -1,4 +1,4 @@
-module Mp3tagSearch
+module Mp3tag
   class Disc
     include MusicInfo
 

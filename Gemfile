@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in mp3tag_search.gemspec
+# Specify your gem's dependencies in mp3tag.gemspec
 gemspec
