@@ -1,6 +1,7 @@
 require "mp3tag/version"
 require "mp3tag/music_info"
 require "mp3tag/amazon_client"
+require "mp3tag/cli"
 require "mp3tag/commands/search"
 
 module Mp3tag

@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "amazon-ecs"
   spec.add_dependency "ruby-mp3info"
+  spec.add_dependency "thor"
 end
