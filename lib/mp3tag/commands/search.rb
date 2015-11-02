@@ -21,7 +21,7 @@ module Mp3tag
 
       FRAME_THUMBNAIL = "APIC"
 
-      def initialize(options)
+      def initialize(options, interactive = false, query = nil)
         @files = options.map{ |file|
           if File::exist?(file)
             if File::directory?(file)
@@ -41,6 +41,8 @@ module Mp3tag
           STDERR.puts("no files")
           exit
         end
+        @query = query
+        @interactive = interactive
 
         @amazon_client = AmazonClient.new
 
@@ -75,15 +77,24 @@ module Mp3tag
       end
 
       def get_target
-        query = Readline.readline("query: ", true).to_s.strip
+        if @interactive
+          @query = Readline.readline("query: ", true).to_s.strip
+        elsif @query.nil?
+          @query = Mp3Info.open(@files[0]){ |mp3|
+            mp3.tag2[PREDEFINED_FRAMES[:album_title]]
+          }
+        end
 
-        candidates = @amazon_client.search_by_keyword(query)
+        candidates = @amazon_client.search_by_keyword(@query)
 
-        candidates.each_with_index{|c, i|
-          puts "#{i+1}: #{c.to_s}"
-        }
+        index = 0
+        if @interactive
+          candidates.each_with_index{|c, i|
+            puts "#{i+1}: #{c.to_s}"
+          }
 
-        index = select_index(1..candidates.size)
+          index = select_index(1..candidates.size)
+        end
 
         if index.nil?
           get_target
@@ -148,6 +159,11 @@ module Mp3tag
           @thumnail_cache[url] = thumbnail
           thumbnail
         end
+      end
+
+      def get_tiles_unique(files)
+        files.collect{ |filepath| 
+        }.uniq
       end
     end
   end
