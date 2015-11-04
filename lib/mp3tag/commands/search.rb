@@ -22,25 +22,7 @@ module Mp3tag
       FRAME_THUMBNAIL = "APIC"
 
       def initialize(files, interactive = false, query = nil)
-        @files = files.map{ |file|
-          if File::exist?(file)
-            if File::directory?(file)
-              Dir::glob(File::expand_path("**/*", file))
-            else
-              file
-            end
-          else
-            STDERR.puts("not exist file or dir")
-            exit
-          end
-        }.flatten.select{|file|
-          file.end_with?(".mp3")
-        }.sort
-
-        if @files.empty?
-          STDERR.puts("no files")
-          exit
-        end
+        @files = files
         @query = query
         @interactive = interactive
 

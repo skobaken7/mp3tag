@@ -2,6 +2,7 @@ require "mp3tag/version"
 require "mp3tag/music_info"
 require "mp3tag/amazon_client"
 require "mp3tag/cli"
+require "mp3tag/file_not_found_exception"
 require "mp3tag/commands/search"
 
 module Mp3tag
@@ -13,6 +14,22 @@ module Mp3tag
 
   def self.edit_tag_proc
     @edit_tag_proc
+  end
+  
+  def self.expand_param_files(files)
+    files.map{ |file|
+      if File::exist?(file)
+        if File::directory?(file)
+          Dir::glob(File::expand_path("**/*", file))
+        else
+          file
+        end
+      else
+        raise FileNotFoundException.new
+      end
+    }.flatten.select{|file|
+      file.end_with?(".mp3")
+    }.sort
   end
 
   require File::expand_path('.mp3tag_config', ENV['HOME'])
