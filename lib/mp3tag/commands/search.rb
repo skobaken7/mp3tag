@@ -21,8 +21,8 @@ module Mp3tag
 
       FRAME_THUMBNAIL = "APIC"
 
-      def initialize(options, interactive = false, query = nil)
-        @files = options.map{ |file|
+      def initialize(files, interactive = false, query = nil)
+        @files = files.map{ |file|
           if File::exist?(file)
             if File::directory?(file)
               Dir::glob(File::expand_path("**/*", file))
