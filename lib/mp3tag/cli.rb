@@ -7,7 +7,7 @@ module Mp3tag
     desc "search [FILE]...", "Search music attributes and set to files"
     def search(*files)
       begin
-        files = Mp3tag.expand_param_files(files)
+        files = expand_param_files(files)
         
         if files.empty?
           STDERR.puts("no files")
@@ -19,6 +19,22 @@ module Mp3tag
         STDERR.puts("not found file(s)")
       end
     end
+  
+    private 
+    def expand_param_files(files)
+      files.map{ |file|
+        if File::exist?(file)
+          if File::directory?(file)
+            Dir::glob(File::expand_path("**/*", file))
+          else
+            file
+          end
+        else
+          raise FileNotFoundException.new
+        end
+      }.flatten.select{|file|
+        file.end_with?(".mp3")
+      }.sort
     end
   end
 end
