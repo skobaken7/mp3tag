@@ -10,13 +10,13 @@ module Mp3tag
         files = expand_param_files(files)
         
         if files.empty?
-          STDERR.puts("no files")
+          STDERR.puts("No files")
           return
         end
 
         Mp3tag::Command::Search.new(files, options["interactive"], options["query"]).exec
       rescue FileNotFoundException
-        STDERR.puts("not found file(s)")
+        STDERR.puts("Not found file(s)")
       end
     end
   
