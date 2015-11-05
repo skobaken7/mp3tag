@@ -19,6 +19,23 @@ module Mp3tag
         STDERR.puts("Not found file(s)")
       end
     end
+
+    option :parent, :type => :string, :default => nil, :aliases => ["p"], :desc => "Set parent dir of files"
+    desc "rename [FILE]...", "Rename and move files by format string"
+    def rename(*files)
+      begin
+        files = expand_param_files(files)
+        
+        if files.empty?
+          STDERR.puts("no files")
+          return
+        end
+
+        Mp3tag::Command::Rename.new(files, options["parent"]).exec
+      rescue FileNotFoundException
+        STDERR.puts("not found file(s)")
+      end
+    end
   
     private 
     def expand_param_files(files)
