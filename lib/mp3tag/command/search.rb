@@ -7,20 +7,6 @@ require 'open-uri'
 module Mp3tag
   module Command
     class Search
-      PREDEFINED_FRAMES = {
-        :album_title => "TALB",
-        :title => "TIT2",
-        :artist => "TPE1",
-        :genre => "TCON",
-        :thumbnail => "APIC",
-        :disc_no => "TPOS",
-        :track_no => "TRCK",
-        :year => 'TYER',
-        :date => 'TDAT'
-      }
-
-      FRAME_THUMBNAIL = "APIC"
-
       def initialize(files, interactive = false, query = nil)
         @files = files
         @query = query
