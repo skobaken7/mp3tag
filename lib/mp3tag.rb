@@ -32,7 +32,10 @@ module Mp3tag
     }.sort
   end
 
-  require File::expand_path('.mp3tag_config', ENV['HOME'])
+  config_file_path = File::expand_path('.mp3tag_config', ENV['HOME'])
+  if File::exists? config_file_path
+    require config_file_path
+  end
 end
 
 module Amazon
