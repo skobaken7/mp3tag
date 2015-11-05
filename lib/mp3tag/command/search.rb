@@ -5,7 +5,7 @@ require 'mp3info'
 require 'open-uri'
 
 module Mp3tag
-  module Commands
+  module Command
     class Search
       PREDEFINED_FRAMES = {
         :album_title => "TALB",

@@ -3,7 +3,7 @@ require "mp3tag/music_info"
 require "mp3tag/amazon_client"
 require "mp3tag/cli"
 require "mp3tag/file_not_found_exception"
-require "mp3tag/commands/search"
+require "mp3tag/command/search"
 
 module Mp3tag
   REQUEST_MAX_COUNT = 100

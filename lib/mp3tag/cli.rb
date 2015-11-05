@@ -14,7 +14,7 @@ module Mp3tag
           return
         end
 
-        Mp3tag::Commands::Search.new(files, options["interactive"], options["query"]).exec
+        Mp3tag::Command::Search.new(files, options["interactive"], options["query"]).exec
       rescue FileNotFoundException
         STDERR.puts("not found file(s)")
       end
