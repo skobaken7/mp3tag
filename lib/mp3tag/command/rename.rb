@@ -20,13 +20,24 @@ module Mp3tag
       def exec
         @files.each{ |filepath| 
           Mp3Info.open(filepath){ |mp3|
-            move_to = mp3.tag2.reduce(RENAME_FORMAT){|move_to, tag_pair|
-              key, value = tag_pair
-              move_to.gsub("%{$key}%", value)
-            }
+            destination_name = get_destination_name(mp3)
+            destination_path = File.join(@parent, destination_name)
 
-            Mp3tag::PREDEFINED_FRAMES.map
+            File.move(filepath, destination_path)
           }
+        }
+      end
+
+      def get_destination_name(mp3, format = RENAME_FORMAT)
+        predefined_frame_values = Mp3tag::PREDEFINED_FRAMES.collect{|key_alias, key|
+          [key_alias, mp3.tag2[key]]
+        }
+
+        frames_values = mp3.tag2 + predefined_frame_values
+
+        move_to = frames_values.reduce(format){|move_to, frame_pair|
+          key, value = frame_pair
+          move_to.gsub("%{$key}%", value)
         }
       end
 
