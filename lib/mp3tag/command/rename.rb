@@ -29,15 +29,15 @@ module Mp3tag
       end
 
       def get_destination_name(mp3, format = RENAME_FORMAT)
-        predefined_frame_values = Mp3tag::PREDEFINED_FRAMES.collect{|key_alias, key|
+        predefined_frame_values = PREDEFINED_FRAMES.collect{|key_alias, key|
           [key_alias, mp3.tag2[key]]
         }
 
-        frames_values = mp3.tag2 + predefined_frame_values
+        frames_values = predefined_frame_values + mp3.tag2.to_a
 
         move_to = frames_values.reduce(format){|move_to, frame_pair|
           key, value = frame_pair
-          move_to.gsub("%{$key}%", value)
+          move_to.gsub("%#{key}%", value.to_s)
         }
       end
 
