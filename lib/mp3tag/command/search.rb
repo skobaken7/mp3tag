@@ -85,7 +85,7 @@ module Mp3tag
           Mp3tag::edit_tag_proc.call(album_info, default_tags)
         end
 
-        Tempfile::open(Mp3tag.to_s){|f|
+        Tempfile::open([Mp3tag.to_s, ".yml"]){|f|
           YAML.dump(default_tags, f)
           f.flush
 
