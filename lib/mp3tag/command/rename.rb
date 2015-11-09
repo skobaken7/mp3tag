@@ -6,7 +6,7 @@ require 'open-uri'
 
 module Mp3tag
   module Command
-    RENAME_FORMAT = "%:genre%/%:album_title%/%:title%.mp3"
+    RENAME_FORMAT = "%genre%/%album_title%/%track_no%-%title%.mp3"
     class Rename
       def initialize(files, parent)
         @files = files
