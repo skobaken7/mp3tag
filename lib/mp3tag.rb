@@ -16,8 +16,8 @@ module Mp3tag
     @edit_tag_proc
   end
 
-  config_file_path = File::expand_path('.mp3tag_config', ENV['HOME'])
-  if File::exists? config_file_path
+  config_file_path = File.join(ENV['HOME'], '.mp3tag_config')
+  if File::exists? config_file_path+".rb"
     require config_file_path
   end
 end
@@ -32,7 +32,7 @@ module Amazon
       begin
         send_request_sub(opts)
       rescue => e
-        if cnt > 0 
+        if cnt > 0 && not(e.message.include? 403)
           send_request(opts, cnt - 1)
         else
           raise e
