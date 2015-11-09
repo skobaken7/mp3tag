@@ -28,6 +28,12 @@ module Mp3tag
           result = described_class.new([], "").get_destination_name(mp3, "%album_title%-%title%.mp3")
           expect(result).to eq("album-title.mp3")
         end
+
+        it 'padding zero to track number' do
+          mp3 = double("mp3file", :tag2 => {"TIT2" => "title", "TALB" => "album", "TRCK" => 7})
+          result = described_class.new([], "").get_destination_name(mp3, "%track_no%-%title%.mp3")
+          expect(result).to eq("07-title.mp3")
+        end
       end
     end
   end
