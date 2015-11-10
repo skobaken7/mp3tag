@@ -6,7 +6,7 @@ require "mp3tag/file_not_found_exception"
 require "mp3tag/command"
 
 module Mp3tag
-  REQUEST_MAX_COUNT = 100
+  REQUEST_MAX_COUNT = 10
 
   def self.edit_tag(&block)
     @edit_tag_proc = block
