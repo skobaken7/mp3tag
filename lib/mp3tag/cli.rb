@@ -21,6 +21,7 @@ module Mp3tag
     end
 
     option :parent, :type => :string, :default => nil, :aliases => ["p"], :desc => "Set parent dir of files"
+    option :replace_space, :type => :string, :default => nil, :aliases => ["S"], :desc => "Replace space characters by designated string"
     desc "rename [FILE]...", "Rename and move files by format string"
     def rename(*files)
       begin
@@ -31,7 +32,7 @@ module Mp3tag
           return
         end
 
-        Mp3tag::Command::Rename.new(files, options["parent"]).exec
+        Mp3tag::Command::Rename.new(files, options["parent"], options["replace_space"]).exec
       rescue FileNotFoundException
         STDERR.puts("not found file(s)")
       end

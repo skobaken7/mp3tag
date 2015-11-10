@@ -8,13 +8,15 @@ module Mp3tag
   module Command
     RENAME_FORMAT = "%genre%/%album_title%/%track_no%-%title%.mp3"
     class Rename
-      def initialize(files, parent)
+      def initialize(files, parent, replace_space)
         @files = files
 
         @parent = parent
         if @parent.nil? || @parent.empty?
           @parent = @files.reduce(:common_prefix)
         end
+
+        @replace_space = replace_space
       end
 
       def exec
@@ -43,10 +45,16 @@ module Mp3tag
           frames_values[PREDEFINED_FRAMES[:track_no]] = track_no
         end
 
-        frames_values.reduce(format){|move_to, frame_pair|
+        move_to = frames_values.reduce(format){|move_to, frame_pair|
           key, value = frame_pair
           move_to.gsub("%#{key}%", value.to_s)
         }
+
+        if @replace_space 
+          move_to = move_to.gsub(/\s+/, @replace_space)
+        end
+
+        move_to
       end
 
       def common_prefix(s1, s2)
