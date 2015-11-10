@@ -69,7 +69,7 @@ module Mp3tag
     def grepArtistFromDescription(description, track_no, title)
       if !description.nil? && !description.empty?
         lines = description.split("<br").map{|a| a.split("\n")}.flatten
-        regexp = /0?#{track_no}\s+(\S+)\s+\/\s+#{title}/
+        regexp = /0?#{Regexp.escape(track_no.to_s)}\s+(\S+)\s+\/\s+#{Regexp.escape(title.to_s)}/
 
         for l in lines
           if regexp.match(l)
