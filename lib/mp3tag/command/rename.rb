@@ -6,14 +6,16 @@ require 'open-uri'
 
 module Mp3tag
   module Command
-    RENAME_FORMAT = "%genre%/%album_title%/%track_no%-%title%.mp3"
+    RENAME_FORMAT = "%genre%/%album_title%/%track_no%.%title%.mp3"
     class Rename
       def initialize(files, parent, replace_space)
         @files = files
 
         @parent = parent
         if @parent.nil? || @parent.empty?
-          @parent = @files.reduce(:common_prefix)
+          @parent = @files.reduce{|parent, filepath|
+            common_prefix(parent, filepath)
+          }
         end
 
         @replace_space = replace_space
